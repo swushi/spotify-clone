@@ -36,6 +36,9 @@
 		22514FB7261BD01F001BAA7D /* NewReleasesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22514FB6261BD01F001BAA7D /* NewReleasesResponse.swift */; };
 		22514FBA261BE870001BAA7D /* APIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22514FB9261BE870001BAA7D /* APIImage.swift */; };
 		22514FBF261BEF12001BAA7D /* FeaturedPlaylistsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22514FBE261BEF12001BAA7D /* FeaturedPlaylistsResponse.swift */; };
+		22514FC3261BF63F001BAA7D /* RecommendedGenresResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22514FC2261BF63F001BAA7D /* RecommendedGenresResponse.swift */; };
+		22514FC6261BFDBD001BAA7D /* RecommendationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22514FC5261BFDBD001BAA7D /* RecommendationsResponse.swift */; };
+		22514FC9261BFFE0001BAA7D /* TrackResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22514FC8261BFFE0001BAA7D /* TrackResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +74,9 @@
 		22514FB6261BD01F001BAA7D /* NewReleasesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReleasesResponse.swift; sourceTree = "<group>"; };
 		22514FB9261BE870001BAA7D /* APIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIImage.swift; sourceTree = "<group>"; };
 		22514FBE261BEF12001BAA7D /* FeaturedPlaylistsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlaylistsResponse.swift; sourceTree = "<group>"; };
+		22514FC2261BF63F001BAA7D /* RecommendedGenresResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendedGenresResponse.swift; sourceTree = "<group>"; };
+		22514FC5261BFDBD001BAA7D /* RecommendationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationsResponse.swift; sourceTree = "<group>"; };
+		22514FC8261BFFE0001BAA7D /* TrackResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackResponse.swift; sourceTree = "<group>"; };
 		F2B0F67E43133BE31B26A1A6 /* Pods_Spotify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Spotify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -175,6 +181,9 @@
 				22514FB6261BD01F001BAA7D /* NewReleasesResponse.swift */,
 				22514FB9261BE870001BAA7D /* APIImage.swift */,
 				22514FBE261BEF12001BAA7D /* FeaturedPlaylistsResponse.swift */,
+				22514FC2261BF63F001BAA7D /* RecommendedGenresResponse.swift */,
+				22514FC5261BFDBD001BAA7D /* RecommendationsResponse.swift */,
+				22514FC8261BFFE0001BAA7D /* TrackResponse.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -343,8 +352,10 @@
 				22514F56261A68B6001BAA7D /* TabBarViewController.swift in Sources */,
 				22514F7E261A69AD001BAA7D /* HapticsManager.swift in Sources */,
 				22514F91261A9AB9001BAA7D /* AuthResponse.swift in Sources */,
+				22514FC9261BFFE0001BAA7D /* TrackResponse.swift in Sources */,
 				22514F84261A6A3F001BAA7D /* AudioTrack.swift in Sources */,
 				22514F3C261A667F001BAA7D /* HomeViewController.swift in Sources */,
+				22514FC6261BFDBD001BAA7D /* RecommendationsResponse.swift in Sources */,
 				22514F62261A6924001BAA7D /* AuthViewController.swift in Sources */,
 				22514F38261A667F001BAA7D /* AppDelegate.swift in Sources */,
 				22514F8A261A6A55001BAA7D /* UserProfile.swift in Sources */,
@@ -360,6 +371,7 @@
 				22514FB7261BD01F001BAA7D /* NewReleasesResponse.swift in Sources */,
 				22514FBF261BEF12001BAA7D /* FeaturedPlaylistsResponse.swift in Sources */,
 				22514FBA261BE870001BAA7D /* APIImage.swift in Sources */,
+				22514FC3261BF63F001BAA7D /* RecommendedGenresResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

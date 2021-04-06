@@ -35,7 +35,6 @@ final class APICaller {
                     let results = try JSONDecoder().decode(UserProfile.self, from: data)
                     completion(.success(results))
                 } catch {
-                    print("Whats going on no json")
                     completion(.failure(APIError.failedToGetData))
                 }
             }
@@ -90,12 +89,58 @@ final class APICaller {
         }
     }
     
+    public func getRecommendedGenres(completion: @escaping (Result<RecommendedGenresResponse, Error>) -> Void) {
+        let url = URL(string: Constants.baseAPIURL + "/recommendations/available-genre-seeds")
+        
+        createRequest(with: url, type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                
+                do {
+                    let results = try JSONDecoder().decode(RecommendedGenresResponse.self, from: data)
+                    completion(.success(results))
+                }
+                catch {
+                    completion(.failure(APIError.failedToParseJSON))
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    public func getRecommendations(genres: [String], completion: @escaping (Result<RecommendationsResponse, Error>) -> Void) {
+        let csvGenres = genres.joined(separator: ",")
+        let url = URL(string: Constants.baseAPIURL + "/recommendations/?seed_genres=\(csvGenres)&limit=1")
+        
+        createRequest(with: url, type: .GET) { request in
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                guard let data = data, error == nil else {
+                    completion(.failure(APIError.failedToGetData))
+                    return
+                }
+                
+                do {
+                    let rawJSON = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                    print("json", rawJSON)
+                    let results = try JSONDecoder().decode(RecommendationsResponse.self, from: data)
+                    completion(.success(results))
+                }
+                catch {
+                    completion(.failure(APIError.failedToParseJSON))
+                }
+            }
+            task.resume()
+        }
+    }
+    
     // MARK: - Private
     
     enum HTTPMethod: String {
         case GET
         case POST
-        
     }
     
     private func createRequest(
