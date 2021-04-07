@@ -33,6 +33,7 @@ final class APICaller {
                 
                 do {
                     let results = try JSONDecoder().decode(UserProfile.self, from: data)
+                    print("got user profile")
                     completion(.success(results))
                 } catch {
                     completion(.failure(APIError.failedToGetData))
@@ -43,7 +44,7 @@ final class APICaller {
     }
     
     public func getNewReleases(completion: @escaping (Result<NewRealeasesResponse, Error>) -> Void) {
-        let url = URL(string: Constants.baseAPIURL + "/browse/new-releases?limit=1")
+        let url = URL(string: Constants.baseAPIURL + "/browse/new-releases?limit=50")
         createRequest(with: url, type: .GET) { request in
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 guard let data = data, error == nil else {
@@ -53,6 +54,7 @@ final class APICaller {
                 
                 do {
                     let results = try JSONDecoder().decode(NewRealeasesResponse.self, from: data)
+                    print("got new releases")
                     completion(.success(results))
                     
                 }
@@ -66,7 +68,7 @@ final class APICaller {
     }
     
     public func getFeaturedPlaylists(completion: @escaping (Result<FeaturedPlaylistsResponse, Error>) -> Void) {
-        let url = URL(string: Constants.baseAPIURL + "/browse/featured-playlists?limit=1")
+        let url = URL(string: Constants.baseAPIURL + "/browse/featured-playlists?limit=20")
         
         createRequest(with: url, type: .GET) { request in
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -77,6 +79,7 @@ final class APICaller {
                 
                 do {
                     let results = try JSONDecoder().decode(FeaturedPlaylistsResponse.self, from: data)
+                    print("got feat playlists")
                     completion(.success(results))
                 }
                 catch {
@@ -101,6 +104,7 @@ final class APICaller {
                 
                 do {
                     let results = try JSONDecoder().decode(RecommendedGenresResponse.self, from: data)
+                    print("got recommended genres")
                     completion(.success(results))
                 }
                 catch {
@@ -113,7 +117,7 @@ final class APICaller {
     
     public func getRecommendations(genres: [String], completion: @escaping (Result<RecommendationsResponse, Error>) -> Void) {
         let csvGenres = genres.joined(separator: ",")
-        let url = URL(string: Constants.baseAPIURL + "/recommendations/?seed_genres=\(csvGenres)&limit=1")
+        let url = URL(string: Constants.baseAPIURL + "/recommendations/?seed_genres=\(csvGenres)")
         
         createRequest(with: url, type: .GET) { request in
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
@@ -124,8 +128,9 @@ final class APICaller {
                 
                 do {
                     let rawJSON = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
-                    print("json", rawJSON)
+                    print(rawJSON)
                     let results = try JSONDecoder().decode(RecommendationsResponse.self, from: data)
+                    print("got recommendations")
                     completion(.success(results))
                 }
                 catch {
